@@ -245,6 +245,17 @@ def database():
                         (ref, kind, text, owner, due, now))
         con.execute("INSERT INTO evidence(ref,type,note,created_at) VALUES('ACME-101','user_data','Funnel: 38% mobile drop at payment',?)", (now,))
         con.execute("INSERT INTO evidence(ref,type,note,created_at) VALUES('ACME-101','customer','14 of 20 interviews',?)", (now,))
+        # a closed epic with its retro facts already fetched, so the Retros tab works without Jira
+        life = {"created": ago(90), "first_dev": ago(55), "closed": ago(20), "days_total": 70, "days_analysis": 35,
+                "days_dev": 35, "status_changes": 6, "reopens": 0, "assignee": "Dev A", "product_owner": "Demo PM",
+                "description": "Returning shoppers reorder a past order in one tap.", "comments": []}
+        scope = {"stories": 6, "done": 6, "added_after_dev_start": 2, "story_points": 21, "assignees": ["Dev A", "Dev B"],
+                 "items": []}
+        con.execute("INSERT INTO retros(epic_key,status,released_at,lifecycle_json,scope_json,created_at,updated_at) "
+                    "VALUES('ACME-110','pending',?,?,?,?,?)", (ago(20), json.dumps(life), json.dumps(scope), now, now))
+        con.execute("INSERT INTO key_results(epic_key,period_id,title,source,unit,direction,baseline,target,current,current_at,"
+                    "owner,created_at,updated_at) VALUES('ACME-110',?,'Repeat purchase rate to 24%','manual','%','up',20,24,22.5,?,"
+                    "'Demo PM',?,?)", (pid, D, now, now))
         db.set_meta(con, "last_sync", now)
         db.set_meta(con, "current_period_id", pid)
     cfg = load_config()

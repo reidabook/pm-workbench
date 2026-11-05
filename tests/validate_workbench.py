@@ -955,6 +955,30 @@ def test_no_internal_references():
     check("test_no_internal_references", not hits, hits)
 
 
+
+def test_course_matches_app():
+    """The course (course/) must cover every journey step and name every step that writes outside the machine."""
+    import subprocess
+    from app import ai_runner, journey
+    course = ROOT / "course"
+    structure = json.loads((course / "course-structure.json").read_text())
+    covered = {s for m in structure["modules"] for l in m["lessons"] for s in l["steps"]}
+    ids = [sid for sid, *_ in journey.STEPS]
+    check("test_course_steps_exist_in_app", covered <= set(ids) | {"discovery"}, sorted(covered - set(ids)))
+    check("test_course_covers_every_step", set(ids) <= covered, sorted(set(ids) - covered))
+    rules = (course / "shared" / "teaching-rules.md").read_text()
+    guide = (course / structure["assistant"]["path"]).read_text()
+    for name, text in (("rules", rules), ("guide", guide)):
+        check(f"test_course_{name}_names_write_skills", all(f"/pm-{s}" in text for s in ai_runner.WRITE_SKILLS),
+              sorted(s for s in ai_runner.WRITE_SKILLS if f"/pm-{s}" not in text))
+    scripts = "\n".join(p.read_text() for p in (course / "lesson-modules").glob("*/CLAUDE.md"))
+    named = set(__import__("re").findall(r"(?<![~\w])/pm-([a-z-]+)", scripts))
+    slashes = {ai_runner.SKILLS[k]({"file": "f", "files": ["f"], "text": "t"}).split()[0][4:] for k in ai_runner.SKILLS}
+    check("test_course_skill_names_exist", named <= slashes, sorted(named - slashes))
+    res = subprocess.run([sys.executable, str(course / "scripts" / "build.py"), "--check"], capture_output=True, text=True)
+    check("test_course_build_is_current", res.returncode == 0, res.stdout.strip()[-400:])
+
+
 if __name__ == "__main__":
     for fn in [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]:
         try:

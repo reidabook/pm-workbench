@@ -71,6 +71,12 @@ guide → research → concept accept → PRD → review → PRD gate → HLD �
 Stories reach Jira only through the **Requirements Accept** gate, and the skill never holds your Jira
 credentials: it asks the running workbench to create the issues.
 
+## Learn it with the course
+
+[`course/`](course) is a guided, hands-on course run by Claude: setup, then one objective through every phase,
+from a signal to a retro. Use your own Jira, or the demo team. `cd course && claude`, then type `/start`.
+It also ships as a Cowork plugin.
+
 ## Product decisions
 
 - **Files over forms.** PMs already write documents. Keeping every artifact as markdown in one folder means
@@ -94,6 +100,7 @@ app/        API, Jira sync, scoring, journey logic, workspace scanners
 skills/     the 15 PM Journey skills + shared conventions
 static/     the UI
 scripts/    demo seed
+course/     guided course (Claude Code skills + Cowork plugin)
 tests/      regression suite + Playwright smoke test
 docs/       workflow, full reference, screenshots
 ```
@@ -101,7 +108,7 @@ docs/       workflow, full reference, screenshots
 ## Tests
 
 ```sh
-python tests/validate_workbench.py      # ~220 checks, no network
+python tests/validate_workbench.py      # ~230 checks, no network
 pip install -r requirements-dev.txt && python -m playwright install chromium
 python tests/smoke_ui.py                # browser smoke test
 ```

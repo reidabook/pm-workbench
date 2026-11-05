@@ -1,0 +1,227 @@
+{
+  "course": {
+    "name": "PM Workbench Course",
+    "code": "pm-workbench-course",
+    "version": "2.0.0",
+    "description": "Set up PM Workbench and take one objective through the full PM Journey, from signal to retro, with Claude as your guide."
+  },
+  "modules": [
+    {
+      "id": "0",
+      "name": "Start",
+      "description": "Orientation and track selection",
+      "lessons": [
+        {
+          "id": "0.1",
+          "title": "Welcome and choose your track",
+          "command": "start",
+          "path": "lesson-modules/0.1-start/CLAUDE.md",
+          "description": "What PM Workbench is, how the course works, and which track fits you",
+          "estimatedMinutes": 5,
+          "track": "all",
+          "steps": [],
+          "next": "start-1-1"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Setup",
+      "description": "Get the workbench running against your Jira, or against demo data",
+      "lessons": [
+        {
+          "id": "1.1",
+          "title": "Prerequisites and first run",
+          "command": "start-1-1",
+          "path": "lesson-modules/1.1-prereqs/CLAUDE.md",
+          "description": "Python, Claude Code, a Jira token, and starting the app (or the demo)",
+          "estimatedMinutes": 15,
+          "track": "all",
+          "steps": [],
+          "next": "start-1-2"
+        },
+        {
+          "id": "1.2",
+          "title": "Configure the workbench",
+          "command": "start-1-2",
+          "path": "lesson-modules/1.2-configure/CLAUDE.md",
+          "description": "Jira connection and fields, the workspace and its skills, first pull, and how the tabs are laid out",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": {
+            "A": "start-1-3a",
+            "B": "start-1-3b",
+            "D": "start-2-1"
+          }
+        },
+        {
+          "id": "1.3a",
+          "title": "Track A: start from scratch",
+          "command": "start-1-3a",
+          "path": "lesson-modules/1.3a-from-scratch/CLAUDE.md",
+          "description": "No PRDs or epics yet: write portfolio context, create objectives, capture a first signal",
+          "estimatedMinutes": 15,
+          "track": "A",
+          "steps": [],
+          "next": "start-2-1"
+        },
+        {
+          "id": "1.3b",
+          "title": "Track B: bring your existing PRDs and epics",
+          "command": "start-1-3b",
+          "path": "lesson-modules/1.3b-existing-work/CLAUDE.md",
+          "description": "Pull epics, bring PRDs into the workspace, link them, and read where each initiative stands",
+          "estimatedMinutes": 25,
+          "track": "B",
+          "steps": [],
+          "next": "start-2-1"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Lifecycle of an objective",
+      "description": "Take one objective from definition to retro",
+      "lessons": [
+        {
+          "id": "2.1",
+          "title": "Define the objective and its key results",
+          "command": "start-2-1",
+          "path": "lesson-modules/2.1-objective/CLAUDE.md",
+          "description": "Write the objective, rank it, give it a parent, add a measurable key result",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": "start-2-2"
+        },
+        {
+          "id": "2.2",
+          "title": "Signals, ideas and evidence",
+          "command": "start-2-2",
+          "path": "lesson-modules/2.2-signals/CLAUDE.md",
+          "description": "Inbox: sources, extracted ideas, groups, and the validation score",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": "start-2-3"
+        },
+        {
+          "id": "2.3",
+          "title": "Discovery: from idea to PRD",
+          "command": "start-2-3",
+          "path": "lesson-modules/2.3-discovery/CLAUDE.md",
+          "description": "pm-guide, discovery, research synthesis, Concept Accept, the PRD, risk review, UX brief, optional prototype",
+          "estimatedMinutes": 45,
+          "track": "all",
+          "steps": [
+            "pm-guide",
+            "discovery",
+            "research-synthesis",
+            "concept-accept",
+            "generate-prd",
+            "risk-review",
+            "ux-brief",
+            "poc"
+          ],
+          "next": "start-2-4"
+        },
+        {
+          "id": "2.4",
+          "title": "The PRD gate",
+          "command": "start-2-4",
+          "path": "lesson-modules/2.4-prd-gate/CLAUDE.md",
+          "description": "review-prd, then validate-prd: what the gate checks, what it decides, and how to recover from FAIL",
+          "estimatedMinutes": 30,
+          "track": "all",
+          "steps": [
+            "review-prd",
+            "validate-prd"
+          ],
+          "next": "start-2-5"
+        },
+        {
+          "id": "2.5",
+          "title": "High-level design",
+          "command": "start-2-5",
+          "path": "lesson-modules/2.5-hld/CLAUDE.md",
+          "description": "generate-hld, validate-hld and its three verdicts, and when design is skipped",
+          "estimatedMinutes": 30,
+          "track": "all",
+          "steps": [
+            "generate-hld",
+            "validate-hld"
+          ],
+          "next": "start-2-6"
+        },
+        {
+          "id": "2.6",
+          "title": "Epics, stories and publishing specs",
+          "command": "start-2-6",
+          "path": "lesson-modules/2.6-epics-and-specs/CLAUDE.md",
+          "description": "generate-epics-and-stories, right-sizing, and the optional spec pull request",
+          "estimatedMinutes": 30,
+          "track": "all",
+          "steps": [
+            "generate-epics-and-stories",
+            "publish-specs"
+          ],
+          "next": "start-2-7"
+        },
+        {
+          "id": "2.7",
+          "title": "Requirements Accept and Ready",
+          "command": "start-2-7",
+          "path": "lesson-modules/2.7-requirements-accept/CLAUDE.md",
+          "description": "The story Definition of Ready, creating stories in Jira, and the Ready badge",
+          "estimatedMinutes": 30,
+          "track": "all",
+          "steps": [
+            "requirements-accept"
+          ],
+          "next": "start-2-8"
+        },
+        {
+          "id": "2.8",
+          "title": "Prioritize the backlog",
+          "command": "start-2-8",
+          "path": "lesson-modules/2.8-backlog/CLAUDE.md",
+          "description": "Score inputs, rank and bands, evidence weighting, and pushing priorities to Jira with a dry run",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": "start-2-9"
+        },
+        {
+          "id": "2.9",
+          "title": "Run it week to week",
+          "command": "start-2-9",
+          "path": "lesson-modules/2.9-run/CLAUDE.md",
+          "description": "Today as a weekly ritual, KR readings, the decision / risk / blocker log, status reports",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": "start-2-10"
+        },
+        {
+          "id": "2.10",
+          "title": "Close the loop: retro",
+          "command": "start-2-10",
+          "path": "lesson-modules/2.10-close/CLAUDE.md",
+          "description": "Retros on closed epics, KRs at release and after, the verdict, and what feeds the next objective",
+          "estimatedMinutes": 20,
+          "track": "all",
+          "steps": [],
+          "next": "guide"
+        }
+      ]
+    }
+  ],
+  "assistant": {
+    "id": "guide",
+    "title": "Guide: what do I do next?",
+    "command": "guide",
+    "path": "lesson-modules/guide/CLAUDE.md",
+    "description": "Ongoing assistant. Reads where an objective or initiative stands and coaches the next step."
+  }
+}
