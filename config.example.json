@@ -1,0 +1,34 @@
+{
+  "jira_base": "https://your-company.atlassian.net",
+  "jira_email": "",
+  "jira_project": "",
+  "parent_project": "",
+  "epic_jql": "",
+  "portfolio_team_ids": {},
+  "jira_plan_url": "",
+  "default_product_owner": "",
+  "default_labels": [],
+  "jira_fields": {
+    "portfolio_team": "",
+    "parent_link": "parent",
+    "outcome": "",
+    "product_owner": "",
+    "acceptance_criteria": "",
+    "story_points": "",
+    "epic_link": ""
+  },
+  "jira_pat_file": "",
+  "claude_mode": "personal",
+  "haiku_model": "claude-haiku-4-5",
+  "poll_minutes": 15,
+  "pr_workspace": "",
+  "prd_dirs": [],
+  "spec_repo": "",
+  "spec_path": "features",
+  "github_pr_authors": [
+    "@me"
+  ],
+  "github_prs": [],
+  "poc_repo": "",
+  "analytics_dir": ""
+}

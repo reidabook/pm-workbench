@@ -1,0 +1,13 @@
+# personal data: db, config, Jira PAT, uploads, exports
+data/
+*.env
+# legacy spreadsheet tooling
+prioritization/*.xlsx
+prioritization/backups/
+prioritization/*snapshot*.json
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# demo install (scripts/seed_demo.py)
+demo/
